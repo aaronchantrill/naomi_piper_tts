@@ -1,0 +1,10 @@
+[Plugin]
+Name = Piper-TTS
+Version = 1.0.0
+License = MIT
+URL = https://github.com/aaronchantrill/naomi_piper_tts.git
+Description = Piper speech synthesizer
+
+[Author]
+Name = Aaron Chantrill
+URL = https://github.com/aaronchantrill
