@@ -1,5 +1,4 @@
 import json
-import logging
 import os
 import struct
 from collections import OrderedDict
@@ -8,6 +7,7 @@ from naomi import paths
 from naomi import plugin
 from naomi import profile
 from piper.voice import PiperVoice
+
 
 class PiperTTSPlugin(plugin.TTSPlugin):
     """
@@ -25,6 +25,46 @@ class PiperTTSPlugin(plugin.TTSPlugin):
                 "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/karlsson/low/de_DE-karlsson-low.onnx?download=true",
                 "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/karlsson/low/de_DE-karlsson-low.onnx.json?download=true.json",
                 "model_file": "de_DE-karlsson-low.onnx"
+            },
+            "kerstin": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/kerstin/low/de_DE-kerstin-low.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/kerstin/low/de_DE-kerstin-low.onnx.json?download=true.json",
+                "model_file": "de_DE-kerstin-low.onnx"
+            },
+            "mls": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/mls/medium/de_DE-mls-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/mls/medium/de_DE-mls-medium.onnx.json?download=true.json",
+                "model_file": "de_DE-mls-medium.onnx"
+            },
+            "pavoque": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/pavoque/low/de_DE-pavoque-low.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/pavoque/low/de_DE-pavoque-low.onnx.json?download=true.json",
+                "model_file": "de_DE-pavoque-low.onnx"
+            },
+            "ramona": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/ramona/low/de_DE-ramona-low.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/ramona/low/de_DE-ramona-low.onnx.json?download=true.json",
+                "model_file": "de_DE-ramona-low.onnx"
+            },
+            "thorsten_low": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/thorsten/low/de_DE-thorsten-low.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/thorsten/low/de_DE-thorsten-low.onnx.json?download=true.json",
+                "model_file": "de_DE-thorsten-low.onnx"
+            },
+            "thorsten_medium": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/thorsten/medium/de_DE-thorsten-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/thorsten/medium/de_DE-thorsten-medium.onnx.json?download=true.json",
+                "model_file": "de_DE-thorsten-medium.onnx"
+            },
+            "thorsten_high": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/thorsten/high/de_DE-thorsten-high.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/thorsten/high/de_DE-thorsten-high.onnx.json?download=true.json",
+                "model_file": "de_DE-thorsten-high.onnx"
+            },
+            "thorsten_emotional": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/thorsten_emotional/medium/de_DE-thorsten_emotional-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/thorsten_emotional/medium/de_DE-thorsten_emotional-medium.onnx.json?download=true.json",
+                "model_file": "de_DE-thorsten_emotional-medium.onnx"
             }
         },
         "en-US": {
@@ -58,11 +98,138 @@ class PiperTTSPlugin(plugin.TTSPlugin):
                 "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/hfc_female/medium/en_US-hfc_female-medium.onnx.json?download=true.json",
                 "model_file": "en_US-hfc_female-medium.onnx"
             },
+            "hfc_male": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/hfc_male/medium/en_US-hfc_male-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/hfc_male/medium/en_US-hfc_male-medium.onnx.json?download=true.json",
+                "model_file": "en_US-hfc_male-medium.onnx"
+            },
+            "joe": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/joe/medium/en_US-joe-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/joe/medium/en_US-joe-medium.onnx.json?download=true.json",
+                "model_file": "en_US-joe-medium.onnx"
+            },
+            "john": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/john/medium/en_US-john-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/john/medium/en_US-john-medium.onnx.json?download=true.json",
+                "model_file": "en_US-john-medium.onnx"
+            },
+            "kathleen": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/kathleen/low/en_US-kathleen-low.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/kathleen/low/en_US-kathleen-low.onnx.json?download=true.json",
+                "model_file": "en_US-kathleen-low.onnx"
+            },
+            "kristin": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/kristin/medium/en_US-kristin-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/kristin/medium/en_US-kristin-medium.onnx.json?download=true.json",
+                "model_file": "en_US-kristin-medium.onnx"
+            },
+            "kusal": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/kusal/medium/en_US-kusal-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/kusal/medium/en_US-kusal-medium.onnx.json?download=true.json",
+                "model_file": "en_US-kusal-medium.onnx"
+            },
+            "l2arctic": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/l2arctic/medium/en_US-l2arctic-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/l2arctic/medium/en_US-l2arctic-medium.onnx.json?download=true.json",
+                "model_file": "en_US-l2arctic-medium.onnx"
+            },
+            "lessac_low": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/low/en_US-lessac-low.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/low/en_US-lessac-low.onnx.json?download=true.json",
+                "model_file": "en_US-lessac-low.onnx"
+            },
+            "lessac_medium": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json?download=true.json",
+                "model_file": "en_US-lessac-medium.onnx"
+            },
+            "lessac_high": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/high/en_US-lessac-high.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/high/en_US-lessac-high.onnx.json?download=true.json",
+                "model_file": "en_US-lessac-high.onnx"
+            },
+            "libritts": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/libritts/high/en_US-libritts-high.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/libritts/high/en_US-libritts-high.onnx.json?download=true.json",
+                "model_file": "en_US-libritts-high.onnx"
+            },
+            "libritts_r": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/libritts_r/medium/en_US-libritts_r-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/libritts_r/medium/en_US-libritts_r-medium.onnx.json?download=true.json",
+                "model_file": "en_US-libritts_r-medium.onnx"
+            },
+            "ljspeech_medium": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/ljspeech/medium/en_US-ljspeech-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/ljspeech/medium/en_US-ljspeech-medium.onnx.json?download=true.json",
+                "model_file": "en_US-ljspeech-medium.onnx"
+            },
+            "ljspeech_high": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/ljspeech/high/en_US-ljspeech-high.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/ljspeech/high/en_US-ljspeech-high.onnx.json?download=true.json",
+                "model_file": "en_US-ljspeech-high.onnx"
+            },
+            "norman": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/norman/medium/en_US-norman-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/norman/medium/en_US-norman-medium.onnx.json?download=true.json",
+                "model_file": "en_US-norman-medium.onnx"
+            },
+            "ryan_low": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/ryan/low/en_US-ryan-low.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/ryan/low/en_US-ryan-low.onnx.json?download=true.json",
+                "model_file": "en_US-ryan-low.onnx"
+            },
+            "ryan_medium": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/ryan/medium/en_US-ryan-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/ryan/low/en_US-ryan-low.onnx.json?download=true.json",
+                "model_file": "en_US-ryan-medium.onnx"
+            },
+            "ryan_high": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/ryan/high/en_US-ryan-high.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/ryan/high/en_US-ryan-high.onnx.json?download=true.json",
+                "model_file": "en_US-ryan-high.onnx"
+            },
             # https://github.com/dnhkng/GlaDOS
-            "glados":{
+            "glados": {
                 "model_url": "https://raw.githubusercontent.com/dnhkng/GlaDOS/main/models/glados.onnx",
                 "config_url": "https://raw.githubusercontent.com/dnhkng/GlaDOS/main/models/glados.onnx.json",
                 "model_file": "glados.onnx"
+            }
+        },
+        "fr-FR": {
+            "gilles": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/fr/fr_FR/gilles/low/fr_FR-gilles-low.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/fr/fr_FR/gilles/low/fr_FR-gilles-low.onnx.json?download=true.json",
+                "model_file": "fr_FR-gilles-low.onnx"
+            },
+            "mls": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx.json?download=true.json",
+                "model_file": "fr_FR-mls-medium.onnx"
+            },
+            "mls_1840": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/fr/fr_FR/mls_1840/low/fr_FR-mls_1840-low.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/fr/fr_FR/mls_1840/low/fr_FR-mls_1840-low.onnx.json?download=true.json",
+                "model_file": "fr_FR-mls_1840-low.onnx"
+            },
+            "siwis_low": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/fr/fr_FR/siwis/low/fr_FR-siwis-low.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/fr/fr_FR/siwis/low/fr_FR-siwis-low.onnx.json?download=true.json",
+                "model_file": "fr_FR-siwis-low.onnx"
+            },
+            "siwis_medium": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/fr/fr_FR/siwis/medium/fr_FR-siwis-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/fr/fr_FR/siwis/medium/fr_FR-siwis-medium.onnx.json?download=true.json",
+                "model_file": "fr_FR-siwis-medium.onnx"
+            },
+            "tom": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/fr/fr_FR/tom/medium/fr_FR-tom-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/fr/fr_FR/tom/medium/fr_FR-tom-medium.onnx.json?download=true.json",
+                "model_file": "fr_FR-tom-medium.onnx"
+            },
+            "upmc": {
+                "model_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/fr/fr_FR/upmc/medium/fr_FR-upmc-medium.onnx?download=true",
+                "config_url": "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/fr/fr_FR/upmc/medium/fr_FR-upmc-medium.onnx.json?download=true.json",
+                "model_file": "fr_FR-upmc-medium.onnx"
             }
         }
     }
@@ -70,27 +237,32 @@ class PiperTTSPlugin(plugin.TTSPlugin):
     def __init__(self, *args, **kwargs):
         plugin.TTSPlugin.__init__(self, *args, **kwargs)
         self.voice = profile.get(['piper-tts', 'voice'])
+        self.current_voice = self.voice
         self.speaker = profile.get(['piper-tts', 'speaker'])
+        self.current_speaker = self.speaker
         self.speaker_id = self.get_speaker_id(
             self.voice,
             self.speaker
         )
-        self.load_model()
+        self.current_speaker_id = self.speaker_id
+        self.sample_rate = {}
+        self.load_model(self.voice)
 
-    def load_model(self):
+    def load_model(self, voice):
         locale = profile.get(['language'])
-        model_dir = os.path.join(paths.sub('piper'), locale, self.voice)
-        model_file = os.path.join(model_dir, self.voices[profile.get("language")][self.voice]['model_file'])
+        self.install_voice(locale, voice)
+        model_dir = os.path.join(paths.sub('piper'), locale, voice)
+        model_file = os.path.join(model_dir, self.voices[profile.get("language")][voice]['model_file'])
         config_file = f"{model_file}.json"
         self.pipervoice = PiperVoice.load(model_file)
         # Get the sample rate from the config file
         try:
             with open(config_file) as f:
                 config = json.load(f)
-            self.sample_rate = config['audio']['sample_rate']
+            self.sample_rate[voice] = config['audio']['sample_rate']
         except Exception as e:
             print(e)
-            self.sample_rate = 22050
+            self.sample_rate[voice] = 22050
 
     def settings(self):
         return OrderedDict(
@@ -137,19 +309,20 @@ class PiperTTSPlugin(plugin.TTSPlugin):
         os.makedirs(model_dir, exist_ok=True)
         model_url = self.voices[locale][voice]['model_url']
         model_filename = os.path.join(model_dir, self.voices[locale][voice]['model_file'])
-        print(f"Downloading from {model_url} to {model_filename}")
-        app_utils.download_file(model_url, model_filename)
+        if not os.path.isfile(model_filename):
+            app_utils.download_file(model_url, model_filename)
         config_url = self.voices[locale][voice]['config_url']
         config_filename = os.path.join(model_dir, f"{self.voices[locale][voice]['model_file']}.json")
-        print(f"Downloading from {config_url} to {config_filename}")
-        app_utils.download_file(config_url, config_filename)
+        if not os.path.isfile(config_filename):
+            app_utils.download_file(config_url, config_filename)
 
-    def get_speakers(self):
+    def get_speakers(self, voice=None):
         """
         List of speakers is kept in the yaml profile
         """
         locale = profile.get(['language'])
-        voice = profile.get(['piper-tts', 'voice'])
+        if voice is None:
+            voice = profile.get(['piper-tts', 'voice'])
         if voice is None:
             return ['Default']
         model_dir = os.path.join(paths.sub('piper'), locale, voice)
@@ -199,23 +372,34 @@ class PiperTTSPlugin(plugin.TTSPlugin):
         # Also, a word with numbers in it will only be read up to the first
         # number, so for words like "MyWifi5248Network" we need to split the
         # string into letters and numbers
-        reconfigure = False
         if voice:
             if "#" in voice:
                 # split voice and speaker at '#'
                 voice, speaker = voice.split('#')
                 if voice != self.voice:
-                    self.voice = voice
-                    self.load_model()
-                speaker_id = get_speaker_id(voice, speaker)
+                    self.load_model(voice)
+                    self.current_voice = voice
+                speaker_id = self.get_speaker_id(voice, speaker)
                 if speaker_id != self.speaker_id:
-                    self.speaker_id = speaker_id
-        output = self.pipervoice.synthesize_stream_raw(phrase, self.speaker_id)
+                    self.current_speaker_id = speaker_id
+            else:
+                if voice != self.current_voice:
+                    self.load_model(voice)
+                    self.current_voice = voice
+                speaker_id = None
+        else:
+            # If a voice is not passed in, use the default voice
+            voice = self.voice
+            if voice != self.current_voice:
+                self.load_model(voice)
+                self.current_voice = voice
+            speaker_id = self.speaker_id
+        output = self.pipervoice.synthesize_stream_raw(phrase, speaker_id)
         byte_output = b''
         for block in output:
             byte_output += block
         # Get the sample rate from the config file
-        return self.pcm2wav(byte_output, sample_rate=self.sample_rate, bits_per_sample=16, channels=1)
+        return self.pcm2wav(byte_output, sample_rate=self.sample_rate[voice], bits_per_sample=16, channels=1)
 
     # https://stackoverflow.com/questions/67317366/how-to-add-header-info-to-a-wav-file-to-get-a-same-result-as-ffmpeg
     # https://stackoverflow.com/questions/28137559/can-someone-explain-wavwave-file-headers
