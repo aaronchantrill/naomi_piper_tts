@@ -14,9 +14,8 @@ meta:
 
 # Piper-TTS - Text to Speech
 
-<PluginLogo/>
-
 Piper speech synthesizer (https://github.com/rhasspy/piper)
 
 <EditPageLink/>
+
 
