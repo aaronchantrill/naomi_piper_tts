@@ -1,6 +1,6 @@
 ---
 id: piper-tts
-label: Piper-TTS
+label: Piper TTS
 title: Piper-TTS - Text to Speech
 type: ttss
 description: "Piper speech synthesizer"
@@ -17,5 +17,6 @@ meta:
 Piper speech synthesizer (https://github.com/rhasspy/piper)
 
 <EditPageLink/>
+
 
 
